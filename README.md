@@ -9,6 +9,8 @@ Two-Factor Security Authentication is required, you must enable this on your Rin
 
 The Ring for Homey app was originally developed by [Dennie de Groot](https://github.com/denniedegroot) and transfered on request to Danee de Kruyff to be made compatible with Homey SDK3 and furter maintenance
 
+Please visit the [Ring Doorbell and Camera support for Homey topic](https://community.homey.app/t/76364) on the Homey Community Forum.
+
 
 ## Licensing:
 * This application is subject to [these terms](https://github.com/daneedk/com.amazon.ring/blob/master/LICENSE).
