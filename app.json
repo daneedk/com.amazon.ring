@@ -1,6 +1,6 @@
 {
   "id": "com.amazon.ring",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "compatibility": ">=8.0.0",
   "platforms": ["local"],
   "sdk": 2,
@@ -34,9 +34,11 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/denniedegroot/com.ring/issues"
+    "url": "https://github.com/daneedk/com.amazon.ring/issues"
   },
-  "source": "https://github.com/denniedegroot/com.ring",
+  "homeyCommunityTopicId": 76364,
+  "source": "https://github.com/daneedk/com.amazon.ring",
+  "support": "https://community.athom.com/t/76364",
   "description": {
     "en": "Ring support for Homey",
     "nl": "Ring ondersteuning voor Homey"
@@ -46,7 +48,6 @@
     "small": "./assets/images/small.jpg"
   },
   "category": "appliances",
-  "athomForumDiscussionId": 4789,
   "capabilities": {
     "flood_light": {
       "type": "boolean",
