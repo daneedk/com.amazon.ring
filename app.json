@@ -4,7 +4,7 @@
   "compatibility": ">=8.0.0",
   "platforms": ["local"],
   "sdk": 2,
-  "brandColor": "#4BD762",
+  "brandColor": "#1A98D5",
   "name": {"en": "Ring"},
   "author": {
     "name": "Danee de Kruyff",
