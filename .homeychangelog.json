@@ -58,5 +58,8 @@
   },
   "2.3.5": {
     "en": "Fixed type in error handling"
+  },
+  "2.3.6": {
+    "en": "App transfered. No functional changes"
   }
 }
