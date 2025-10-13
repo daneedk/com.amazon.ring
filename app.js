@@ -81,19 +81,17 @@ class App extends Homey.App {
                 this.alarmSystem.mode = data.mode
             }
             
-            if (['some', 'all'].includes(data.mode)) {
-                const isTriggered = (data.alarmInfo && data.alarmInfo.state === 'burglar-alarm') || (data.siren && data.siren.state === 'on');
-                if (isTriggered) {
-                    this.triggerRingAlarmTriggered(
-                        {
-                            timestamp: new Date().toISOString()
-                        },
-                        {
-                            location: this.alarmSystem.location
-                        }
-                    );
-                } 
-            }
+            const isTriggered = (data.alarmInfo && data.alarmInfo.state === 'burglar-alarm') || (data.siren && data.siren.state === 'on');
+            if (isTriggered) {
+                this.triggerRingAlarmTriggered(
+                    {
+                        timestamp: new Date().toISOString()
+                    },
+                    {
+                        location: this.alarmSystem.location
+                    }
+                );
+            } 
         }
 
         this.homey.emit('ringOnAlarmData', data);
