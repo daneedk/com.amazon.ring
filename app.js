@@ -42,6 +42,9 @@ class App extends Homey.App {
         this._setLocationMode = this.homey.flow.getActionCard('change_location_mode');
         this.setLocationMode();
 
+        this._triggerRingAlarmTriggered = this.homey.flow.getTriggerCard('ring_alarm_triggered');
+        this.registerRingAlarmTriggered();
+
         this.log(`${Homey.manifest.id} ${Homey.manifest.version}    initialising done ---------`);
 
         // Purge the logfile
@@ -69,13 +72,27 @@ class App extends Homey.App {
     }
 
     // Called from event emitted from _connectRingAPI() in Api.js for Ring Alarm devices
-    _ringOnAlarmData(data) {
+    async _ringOnAlarmData(data) {
         if ( data.catalogId == this.alarmSystem.catalogId ) {
             if ( this.alarmSystem.mode != data.mode ) {
                 // Mode changed
                 this.log('this.alarmSystem: ', this.alarmSystem);
                 
                 this.alarmSystem.mode = data.mode
+            }
+            
+            if (['some', 'all'].includes(data.mode)) {
+                const isTriggered = (data.alarmInfo && data.alarmInfo.state === 'burglar-alarm') || (data.siren && data.siren.state === 'on');
+                if (isTriggered) {
+                    this.triggerRingAlarmTriggered(
+                        {
+                            timestamp: new Date().toISOString()
+                        },
+                        {
+                            location: this.alarmSystem.location
+                        }
+                    );
+                } 
             }
         }
 
@@ -243,6 +260,32 @@ class App extends Homey.App {
                 });
             });
     }
+
+    // flow trigger
+    // Ring alarm triggered flow trigger
+    triggerRingAlarmTriggered(tokens, state) {
+       if (this._triggerRingAlarmTriggered) {
+            this._triggerRingAlarmTriggered.trigger(tokens, state);
+       }
+    }
+
+    registerRingAlarmTriggered() {
+        this._triggerRingAlarmTriggered
+            .registerRunListener((args, state) => {
+                this.log('registerRingAlarmTriggered', args, state);
+                return Promise.resolve(
+                    args.location.id === state.location.id
+                );
+            })
+            .getArgument('location')
+            .registerAutocompleteListener((query, args) => {
+                return new Promise(async (resolve) => {
+                    const locations = await this._api.userLocations();
+                    resolve(locations);
+                });
+            });
+    }
+
 
     // Called from settingspages through api.js
     async getDevicesInfo() {
