@@ -272,7 +272,6 @@ class App extends Homey.App {
     registerRingAlarmTriggered() {
         this._triggerRingAlarmTriggered
             .registerRunListener((args, state) => {
-                this.log('registerRingAlarmTriggered', args, state);
                 return Promise.resolve(
                     args.location.id === state.location.id
                 );
