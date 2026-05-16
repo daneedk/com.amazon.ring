@@ -619,5 +619,18 @@
       "no": "• Forbedret registrering av strømmodus",
       "pl": "• Ulepszone wykrywanie trybu zasilania",
       "sv": "• Förbättrad identifiering av strömläge"
+  },
+  "2.14.20": {
+      "en": "• Improved logging",
+      "da": "• Forbedret logning",
+      "de": "• Verbesserte Protokollierung",
+      "es": "• Registro mejorado",
+      "fr": "• Journalisation améliorée",
+      "it": "• Registrazione migliorata",
+      "ko": "• 로깅이 개선되었습니다",
+      "nl": "• Verbeterde logging",
+      "no": "• Forbedret logging",
+      "pl": "• Ulepszone rejestrowanie",
+      "sv": "• Förbättrad loggning"
   }
 }
