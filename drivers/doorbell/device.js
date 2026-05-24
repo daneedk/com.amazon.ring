@@ -83,7 +83,9 @@ class DeviceDoorbell extends Device {
                 snapshot.push(null);
                 return snapshot.pipe(stream);
             } catch (error) {
-                this.log('device.js grabImage', error);
+                if (!error.message?.includes('unable to capture snapshots while streaming')) {
+                    this.log('device.js grabImage', error);
+                }
 
                 const { Duplex } = require('stream');
                 const snapshot = new Duplex();
@@ -174,8 +176,6 @@ class DeviceDoorbell extends Device {
             if (this.motionAlerts) {
                 this.driver.alarmMotionOn(this, tokens);
             }
-
-            //this.log('Motion detection Doorbell notification.subtype ==',notification.ding.detection_type);
 
             clearTimeout(this.device.timer.motion);
 

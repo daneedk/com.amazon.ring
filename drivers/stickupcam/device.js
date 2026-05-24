@@ -128,7 +128,9 @@ class DeviceStickUpCam extends Device {
                 snapshot.push(null);
                 return snapshot.pipe(stream);
             } catch (error) {
-                this.log('device.js grabImage', error);
+                if (!error.message?.includes('unable to capture snapshots while streaming')) {
+                    this.log('device.js grabImage', error);
+                }
 
                 const { Duplex } = require('stream');
                 const snapshot = new Duplex();
