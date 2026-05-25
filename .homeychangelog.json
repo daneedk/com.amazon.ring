@@ -632,5 +632,18 @@
       "no": "• Forbedret logging for bevegelsesdeteksjon",
       "pl": "• Ulepszone rejestrowanie wykrywania ruchu",
       "sv": "• Förbättrad loggning för rörelsedetektering"
+  },
+  "2.14.21": {
+      "en": "• Improved power mode detection • Code improvements",
+      "da": "• Forbedret registrering af strømtilstand • Kodeforbedringer",
+      "de": "• Verbesserte Energiemodusskennung • Code-Verbesserungen",
+      "es": "• Detección del modo de alimentación mejorada • Mejoras de código",
+      "fr": "• Détection du mode d'alimentation améliorée • Améliorations du code",
+      "it": "• Rilevamento della modalità di alimentazione migliorato • Miglioramenti al codice",
+      "ko": "• 전원 모드 감지 기능이 개선되었습니다 • 코드 개선",
+      "nl": "• Verbeterde detectie van de voedingsmodus • Codeverbeteringen",
+      "no": "• Forbedret registrering av strømmodus • Kodeforbedringer",
+      "pl": "• Ulepszone wykrywanie trybu zasilania • Ulepszenia kodu",
+      "sv": "• Förbättrad identifiering av strömläge • Kodförbättringar"
   }
 }

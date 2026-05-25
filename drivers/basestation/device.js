@@ -236,10 +236,9 @@ class DeviceBasestation extends Device {
                 
             }
 
-            // alarm modes
-            //if (!data.alarmInfo) return; // guard against running code below
-
             this.log(data.alarmInfo);
+
+            if (data.alarmInfo === undefined) return;
             
             if (data.alarmInfo === null) {
                 this.log('Alarm canceled');
