@@ -184,7 +184,8 @@ class DeviceStickUpCam extends Device {
             await this.setCapabilityValue('alarm_motion', true)
                 .catch(error => {this.error(error)});
             this.homey.app.logRealtime('stickupcam', 'motion');
-            let logLine = "stickupcam || _ringOnNotification || " + this.getName() + " reported motion event";
+            const rawType = notification.data.event.ding.detection_type ? notification.data.event.ding.detection_type : null;
+            let logLine = "stickupcam || _ringOnNotification || " + this.getName() + " reported motion event:" + rawType;
             this.homey.app.writeLog(logLine);
 
             //const type = notification.ding.detection_type; // null, human, package_delivery, other_motion

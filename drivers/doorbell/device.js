@@ -161,7 +161,8 @@ class DeviceDoorbell extends Device {
         } else if (notification.android_config.category === 'com.ring.pn.live-event.motion') {
             if (!this.getCapabilityValue('alarm_motion')) {
                 this.homey.app.logRealtime('doorbell', 'motion');
-                let logLine = "doorbell || _ringOnNotification || " + this.getName() + " reported motion event";
+                const rawType = notification.data.event.ding.detection_type ? notification.data.event.ding.detection_type : null;
+                let logLine = "doorbell || _ringOnNotification || " + this.getName() + " reported motion event:" + rawType;
                 this.homey.app.writeLog(logLine);
             }
             
