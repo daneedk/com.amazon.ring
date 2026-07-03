@@ -645,5 +645,18 @@
       "no": "• Forbedret registrering av strømmodus • Kodeforbedringer",
       "pl": "• Ulepszone wykrywanie trybu zasilania • Ulepszenia kodu",
       "sv": "• Förbättrad identifiering av strömläge • Kodförbättringar"
+  },
+  "2.14.22": {
+      "en": "• Improved power mode detection",
+      "da": "• Forbedret registrering af strømtilstand",
+      "de": "• Verbesserte Energiemodusskennung",
+      "es": "• Detección del modo de alimentación mejorada",
+      "fr": "• Détection du mode d'alimentation améliorée",
+      "it": "• Rilevamento della modalità di alimentazione migliorato",
+      "ko": "• 전원 모드 감지 기능이 개선되었습니다",
+      "nl": "• Verbeterde detectie van de voedingsmodus",
+      "no": "• Forbedret registrering av strømmodus",
+      "pl": "• Ulepszone wykrywanie trybu zasilania",
+      "sv": "• Förbättrad identifiering av strömläge"
   }
 }
