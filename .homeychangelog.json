@@ -658,5 +658,18 @@
       "no": "• Forbedret registrering av strømmodus",
       "pl": "• Ulepszone wykrywanie trybu zasilania",
       "sv": "• Förbättrad identifiering av strömläge"
+  },
+  "2.14.23": {
+      "en": "• Added motion-activated floodlight setting with flow cards to enable/disable it",
+      "da": "• Tilføjet indstilling for bevægelsesaktiveret lys med flow-kort til at aktivere/deaktivere den",
+      "de": "• Einstellung für bewegungsaktivierte Beleuchtung mit Flow-Karten zum Aktivieren/Deaktivieren hinzugefügt",
+      "es": "• Añadida configuración de luces activadas por movimiento con tarjetas de flujo para activarla/desactivarla",
+      "fr": "• Ajout du paramètre d'éclairage activé par mouvement avec des cartes de flux pour l'activer/le désactiver",
+      "it": "• Aggiunta l'impostazione delle luci attivate dal movimento con schede di flusso per abilitarla/disabilitarla",
+      "ko": "• 움직임 감지 조명 설정 및 이를 활성화/비활성화하는 플로우 카드 추가",
+      "nl": "• Instelling voor bewegingsgeactiveerde verlichting toegevoegd met flow-kaarten om deze in/uit te schakelen",
+      "no": "• Lagt til innstilling for bevegelsesaktivert lys med flow-kort for å aktivere/deaktivere den",
+      "pl": "• Dodano ustawienie oświetlenia aktywowanego ruchem wraz z kartami przepływu do jego włączania/wyłączania",
+      "sv": "• Lade till inställning för rörelseaktiverad belysning med flödeskort för att aktivera/inaktivera den"
   }
 }
