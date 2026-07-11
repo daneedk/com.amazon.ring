@@ -105,6 +105,40 @@
       "args": []
     },
     {
+      "id": "stickupcam_enable_floodlight_on_motion",
+      "title": {
+        "en": "Enable motion-activated lights",
+        "ko": "움직임 감지 조명 활성화",
+        "da": "Aktiver bevægelsesaktiveret lys",
+        "de": "Bewegungsaktivierte Beleuchtung aktivieren",
+        "es": "Activar luces activadas por movimiento",
+        "fr": "Activer l'éclairage activé par mouvement",
+        "it": "Abilita le luci attivate dal movimento",
+        "nl": "Bewegingsgeactiveerde verlichting inschakelen",
+        "no": "Aktiver bevegelsesaktivert lys",
+        "pl": "Włącz oświetlenie aktywowane ruchem",
+        "sv": "Aktivera rörelseaktiverad belysning"
+      },
+      "args": []
+    },
+    {
+      "id": "stickupcam_disable_floodlight_on_motion",
+      "title": {
+        "en": "Disable motion-activated lights",
+        "ko": "움직임 감지 조명 비활성화",
+        "da": "Deaktiver bevægelsesaktiveret lys",
+        "de": "Bewegungsaktivierte Beleuchtung deaktivieren",
+        "es": "Desactivar luces activadas por movimiento",
+        "fr": "Désactiver l'éclairage activé par mouvement",
+        "it": "Disabilita le luci attivate dal movimento",
+        "nl": "Bewegingsgeactiveerde verlichting uitschakelen",
+        "no": "Deaktiver bevegelsesaktivert lys",
+        "pl": "Wyłącz oświetlenie aktywowane ruchem",
+        "sv": "Inaktivera rörelseaktiverad belysning"
+      },
+      "args": []
+    },    
+    {
       "id": "stickupcam_light_on",
       "title": {
         "en": "Turn the floodlight on",

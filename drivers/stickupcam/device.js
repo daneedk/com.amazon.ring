@@ -209,6 +209,9 @@ class DeviceStickUpCam extends Device {
 
     async ringOnData(data) {
         //this.log('_ringOnData data',data);
+        if (data.kind == 'cocoa_spotlight') {
+            //this.log('_ringOnData data', JSON.stringify(data, null, 2));
+        }
 
         this._enableLightCapability(data);
         this._enableSirenCapability(data);
@@ -264,6 +267,9 @@ class DeviceStickUpCam extends Device {
         }
 
         this.setSettings({useMotionDetection: data.settings.motion_detection_enabled})
+            .catch((error) => {});
+
+        this.setSettings({useFloodlightOnMotion: !data.settings.light_snooze_settings.always_on})
             .catch((error) => {});
     }
 
@@ -357,7 +363,7 @@ class DeviceStickUpCam extends Device {
         return this.homey.app.sirenOff(device_data);
     }
 
-    async onSettings(settings) {
+    async onSettings(settings) { 
         for (const changedSetting of settings.changedKeys) {
             if (changedSetting === 'useMotionDetection') {
                 if (settings.newSettings.useMotionDetection) {
@@ -365,12 +371,13 @@ class DeviceStickUpCam extends Device {
                 } else {
                     await this.disableMotion();
                 }
+            } else if (changedSetting === 'useFloodlightOnMotion') {
+                await this.useFloodlightOnMotion(settings.newSettings.useFloodlightOnMotion);
             } else if (changedSetting === 'useMotionAlerts') {
                 this.motionAlerts = settings.newSettings.useMotionAlerts;
-            } 
-            else if (changedSetting === 'motionTimeout') {
+            } else if (changedSetting === 'motionTimeout') {
                 this.motionTimeout = settings.newSettings.motionTimeout;
-            }
+            } 
         }
     }
 
@@ -392,6 +399,16 @@ class DeviceStickUpCam extends Device {
         const device_data = this.getData();
         await this.homey.app.disableMotion(device_data);
         return true;
+    }
+
+    async useFloodlightOnMotion(useFloodlightOnMotion) {
+        if (this._device instanceof Error) {
+            throw this._device;
+        }
+
+        const device_data = this.getData();
+        await this.homey.app.useFloodlightOnMotion(device_data,useFloodlightOnMotion);
+        return true;        
     }
 
     async setMotionAlerts(state) {

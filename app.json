@@ -2022,6 +2022,52 @@
         ]
       },
       {
+        "id": "stickupcam_enable_floodlight_on_motion",
+        "title": {
+          "en": "Enable motion-activated lights",
+          "ko": "움직임 감지 조명 활성화",
+          "da": "Aktiver bevægelsesaktiveret lys",
+          "de": "Bewegungsaktivierte Beleuchtung aktivieren",
+          "es": "Activar luces activadas por movimiento",
+          "fr": "Activer l'éclairage activé par mouvement",
+          "it": "Abilita le luci attivate dal movimento",
+          "nl": "Bewegingsgeactiveerde verlichting inschakelen",
+          "no": "Aktiver bevegelsesaktivert lys",
+          "pl": "Włącz oświetlenie aktywowane ruchem",
+          "sv": "Aktivera rörelseaktiverad belysning"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=stickupcam"
+          }
+        ]
+      },
+      {
+        "id": "stickupcam_disable_floodlight_on_motion",
+        "title": {
+          "en": "Disable motion-activated lights",
+          "ko": "움직임 감지 조명 비활성화",
+          "da": "Deaktiver bevægelsesaktiveret lys",
+          "de": "Bewegungsaktivierte Beleuchtung deaktivieren",
+          "es": "Desactivar luces activadas por movimiento",
+          "fr": "Désactiver l'éclairage activé par mouvement",
+          "it": "Disabilita le luci attivate dal movimento",
+          "nl": "Bewegingsgeactiveerde verlichting uitschakelen",
+          "no": "Deaktiver bevegelsesaktivert lys",
+          "pl": "Wyłącz oświetlenie aktywowane ruchem",
+          "sv": "Inaktivera rörelseaktiverad belysning"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=stickupcam"
+          }
+        ]
+      },
+      {
         "id": "stickupcam_light_on",
         "title": {
           "en": "Turn the floodlight on",
@@ -2849,6 +2895,37 @@
                 "pl": "Ta opcja wyłączy alarm ruchu po upływie określonego czasu.\n\nDomyślnie: 30 sekund.",
                 "sv": "Denna inställning kommer att inaktivera rörelselarmet efter att den angivna tiden har löpt ut.\n\nStandard: 30 sekunder.",
                 "ko": "지정된 시간이 지나면 움직임 알람이 자동으로 꺼집니다.\n\n기본값: 30초"
+              }
+            },
+            {
+              "id": "useFloodlightOnMotion",
+              "type": "checkbox",
+              "value": true,
+              "label": {
+                "en": "Motion-Activated Lights",
+                "da": "Bevægelsesaktiveret lys",
+                "de": "Bewegungsaktivierte Leuchten",
+                "es": "Luces activadas por movimiento",
+                "fr": "Éclairage activé par mouvement",
+                "it": "Luci attivate dal movimento",
+                "nl": "Bewegingsgeactiveerde verlichting",
+                "no": "Bevegelsesaktivert lys",
+                "pl": "Oświetlenie aktywowane ruchem",
+                "sv": "Rörelseaktiverad belysning",
+                "ko": "움직임 감지 조명"
+              },
+              "hint": {
+                "en": "Turn on the lights when the camera detects motion at night",
+                "da": "Tænd lyset, når kameraet registrerer bevægelse om natten",
+                "de": "Beleuchtung einschalten, wenn die Kamera nachts Bewegung erfasst.",
+                "es": "Enciende las luces cuando la cámara detecta movimiento por la noche",
+                "fr": "Allume les lumières lorsque la caméra détecte un mouvement la nuit",
+                "it": "Accende le luci quando la telecamera rileva un movimento di notte",
+                "nl": "Schakel de verlichting in wanneer de camera 's nachts beweging detecteert",
+                "no": "Slår på lysene når kameraet oppdager bevegelse om natten",
+                "pl": "Włącza światła, gdy kamera wykryje ruch w nocy",
+                "sv": "Tänder lamporna när kameran upptäcker rörelse på natten",
+                "ko": "카메라가 야간에 움직임을 감지하면 조명을 켭니다"
               }
             }
           ]

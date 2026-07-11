@@ -233,6 +233,10 @@ class App extends Homey.App {
         return this._api.disableMotion(data);
     }
 
+    async useFloodlightOnMotion(data,useFloodlightOnMotion) {
+        return this._api.useFloodlightOnMotion(data,useFloodlightOnMotion)
+    }
+
 
     logRealtime(event, details) {
         this.homey.api.realtime(event, details)
