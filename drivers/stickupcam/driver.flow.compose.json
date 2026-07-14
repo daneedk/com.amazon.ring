@@ -15,7 +15,8 @@
         "pl": "Reflektor !{{jest|nie jest}} włączony",
         "sv": "Strålkastaren !{{är|är inte}} på"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=flood_light"
     }
   ],
   "actions": [
@@ -119,7 +120,8 @@
         "pl": "Włącz oświetlenie aktywowane ruchem",
         "sv": "Aktivera rörelseaktiverad belysning"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=flood_light"
     },
     {
       "id": "stickupcam_disable_floodlight_on_motion",
@@ -136,7 +138,8 @@
         "pl": "Wyłącz oświetlenie aktywowane ruchem",
         "sv": "Inaktivera rörelseaktiverad belysning"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=flood_light"
     },    
     {
       "id": "stickupcam_light_on",
@@ -153,7 +156,8 @@
         "pl": "Włącz reflektor",
         "sv": "Sätt på översvämningsljuset"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=flood_light"
     },
     {
       "id": "stickupcam_light_off",
@@ -170,7 +174,8 @@
         "pl": "Wyłącz reflektor",
         "sv": "Stäng av översvämningsljuset"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=flood_light"
     },
     {
       "id": "stickupcam_siren_off",
@@ -187,7 +192,8 @@
         "pl": "Wyłącz syrenę",
         "sv": "Stäng av siren"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=siren"
     },
     {
       "id": "stickupcam_siren_on",
@@ -204,7 +210,8 @@
         "pl": "Włącz syrenę",
         "sv": "Sätt på sirenen"
       },
-      "args": []
+      "args": [],
+      "$filter": "capabilities=siren"
     }
   ]
 }

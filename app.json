@@ -1,7 +1,7 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
   "id": "com.amazon.ring",
-  "version": "2.14.23",
+  "version": "2.14.24",
   "compatibility": ">=12.11.0",
   "platforms": [
     "local"
@@ -1411,7 +1411,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=flood_light"
           }
         ]
       }
@@ -2040,7 +2040,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=flood_light"
           }
         ]
       },
@@ -2063,7 +2063,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=flood_light"
           }
         ]
       },
@@ -2086,7 +2086,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=flood_light"
           }
         ]
       },
@@ -2109,7 +2109,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=flood_light"
           }
         ]
       },
@@ -2132,7 +2132,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=siren"
           }
         ]
       },
@@ -2155,7 +2155,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=stickupcam"
+            "filter": "driver_id=stickupcam&capabilities=siren"
           }
         ]
       }
@@ -2915,17 +2915,17 @@
                 "ko": "움직임 감지 조명"
               },
               "hint": {
-                "en": "Turn on the lights when the camera detects motion at night",
-                "da": "Tænd lyset, når kameraet registrerer bevægelse om natten",
-                "de": "Beleuchtung einschalten, wenn die Kamera nachts Bewegung erfasst.",
-                "es": "Enciende las luces cuando la cámara detecta movimiento por la noche",
-                "fr": "Allume les lumières lorsque la caméra détecte un mouvement la nuit",
-                "it": "Accende le luci quando la telecamera rileva un movimento di notte",
-                "nl": "Schakel de verlichting in wanneer de camera 's nachts beweging detecteert",
-                "no": "Slår på lysene når kameraet oppdager bevegelse om natten",
-                "pl": "Włącza światła, gdy kamera wykryje ruch w nocy",
-                "sv": "Tänder lamporna när kameran upptäcker rörelse på natten",
-                "ko": "카메라가 야간에 움직임을 감지하면 조명을 켭니다"
+                "en": "Turn on the lights when the camera detects motion at night.\n\nNote: only applies to camera models with a built-in floodlight.",
+                "da": "Tænd lyset, når kameraet registrerer bevægelse om natten.\n\nBemærk: gælder kun for kameramodeller med indbygget lys.",
+                "de": "Beleuchtung einschalten, wenn die Kamera nachts Bewegung erfasst.\n\nHinweis: gilt nur für Kameramodelle mit integriertem Flutlicht.",
+                "es": "Enciende las luces cuando la cámara detecta movimiento por la noche.\n\nNota: solo se aplica a modelos de cámara con foco integrado.",
+                "fr": "Allume les lumières lorsque la caméra détecte un mouvement la nuit.\n\nRemarque : s'applique uniquement aux modèles de caméra avec projecteur intégré.",
+                "it": "Accende le luci quando la telecamera rileva un movimento di notte.\n\nNota: si applica solo ai modelli di telecamera con faro integrato.",
+                "nl": "Schakel de verlichting in wanneer de camera 's nachts beweging detecteert.\n\nLet op: geldt alleen voor cameramodellen met ingebouwde schijnwerper.",
+                "no": "Slår på lysene når kameraet oppdager bevegelse om natten.\n\nMerk: gjelder kun kameramodeller med innebygd flomlys.",
+                "pl": "Włącza światła, gdy kamera wykryje ruch w nocy.\n\nUwaga: dotyczy tylko modeli kamer z wbudowanym reflektorem.",
+                "sv": "Tänder lamporna när kameran upptäcker rörelse på natten.\n\nObs: gäller endast kameramodeller med inbyggd strålkastare.",
+                "ko": "카메라가 야간에 움직임을 감지하면 조명을 켭니다.\n\n참고: 내장 조명이 있는 카메라 모델에만 적용됩니다."
               }
             }
           ]

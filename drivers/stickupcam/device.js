@@ -269,8 +269,13 @@ class DeviceStickUpCam extends Device {
         this.setSettings({useMotionDetection: data.settings.motion_detection_enabled})
             .catch((error) => {});
 
-        this.setSettings({useFloodlightOnMotion: !data.settings.light_snooze_settings.always_on})
-            .catch((error) => {});
+        if (this.hasCapability("flood_light")) {    
+            this.setSettings({useFloodlightOnMotion: !data.settings.light_snooze_settings?.always_on})
+                .catch((error) => {});
+        } else {
+            this.setSettings({useFloodlightOnMotion: false})
+                .catch((error) => {});
+        }
     }
 
     grabImage(args, state) {
@@ -372,7 +377,9 @@ class DeviceStickUpCam extends Device {
                     await this.disableMotion();
                 }
             } else if (changedSetting === 'useFloodlightOnMotion') {
-                await this.useFloodlightOnMotion(settings.newSettings.useFloodlightOnMotion);
+                if (this.hasCapability('flood_light')) {
+                    await this.useFloodlightOnMotion(settings.newSettings.useFloodlightOnMotion);
+                }
             } else if (changedSetting === 'useMotionAlerts') {
                 this.motionAlerts = settings.newSettings.useMotionAlerts;
             } else if (changedSetting === 'motionTimeout') {
