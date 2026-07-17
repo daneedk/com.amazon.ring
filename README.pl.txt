@@ -9,8 +9,8 @@ Integracja urządzeń Ring z Homey zapewnia płynne sterowanie i automatyzację 
 
 Dzięki współpracy Ring i Homey, możesz stworzyć inteligentniejszy i bardziej responsywny dom, który informuje Cię i daje Ci kontrolę, gdziekolwiek jesteś.  
 
-Odwiedź temat wsparcia Ring Doorbell, Camera And Alarm na forum społeczności Homey, aby uzyskać więcej informacji. Kliknij na Visit Forum >> w sekcji Community w szarej ramce poniżej.  
-(Lub skopiuj ten link i wklej go w pasku adresu swojej przeglądarki: https://community.homey.app/t/76364)  
+Odwiedź temat wsparcia Ring Doorbell, Camera And Alarm na forum społeczności Homey, aby uzyskać więcej informacji.
+Aby tam przejść, kliknij link pomocy technicznej dewelopera w sekcji Wsparcie poniżej.
 
 Obsługiwane języki
 🇬🇧 English
@@ -19,6 +19,7 @@ Obsługiwane języki
 🇪🇸 Español
 🇫🇷 Français
 🇮🇹 Italiano
+🇰🇷 한국어
 🇳🇱 Nederlands
 🇳🇴 Norsk
 🇵🇱 Polski

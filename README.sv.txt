@@ -9,8 +9,8 @@ Genom att integrera Ring-enheter med Homey får du sömlös kontroll och automat
 
 Med Ring och Homey som samarbetar kan du skapa ett smartare och mer responsivt hem som håller dig informerad och under kontroll, oavsett var du är.  
 
-Besök ämnet Ring Doorbell, Camera And Alarm support på Homey Community Forum för mer information. Klicka på Visit Forum >> under Community-sektionen i den grå blocken nedan.  
-(Eller kopiera denna länk och klistra in den i adressfältet i din webbläsare: https://community.homey.app/t/76364)  
+Besök ämnet Ring Doorbell, Camera And Alarm support på Homey Community Forum för mer information.
+För att komma dit, klicka på utvecklarsupportlänken i Support-avsnittet nedan.
 
 Stödda språk
 🇬🇧 English
@@ -19,6 +19,7 @@ Stödda språk
 🇪🇸 Español
 🇫🇷 Français
 🇮🇹 Italiano
+🇰🇷 한국어
 🇳🇱 Nederlands
 🇳🇴 Norsk
 🇵🇱 Polski
