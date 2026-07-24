@@ -34,9 +34,10 @@
         "debuginfo": "Abre la consola del navegador para ver el registro de depuración"
     },
     "devices": {
-        "unauthenticated": {
-            "es": "Homey ya no está autenticado en Ring. Utilice la función de reparación para volver a autenticarse."
-        }
+        "unauthenticated": "Homey ya no está autenticado en Ring. Utilice la función de reparación para volver a autenticarse."
+    },
+    "notifications": {
+        "unauthenticated": "La aplicación Ring ya no está autenticada en Ring. Utilice la función de reparación para volver a conectar."
     },
     "motiontype": {
         "null": "Otro",

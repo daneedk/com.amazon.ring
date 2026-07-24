@@ -34,9 +34,10 @@
         "debuginfo": "Ouvrez la console du navigateur pour afficher le journal de débogage"
     },
     "devices": {
-        "unauthenticated": {
-            "fr": "Homey n'est plus authentifié chez Ring. Veuillez utiliser la fonction de réparation pour vous réauthentifier."
-        }
+        "unauthenticated": "Homey n'est plus authentifié chez Ring. Veuillez utiliser la fonction de réparation pour vous réauthentifier."
+    },
+    "notifications": {
+        "unauthenticated": "L'application Ring n'est plus authentifiée auprès de Ring. Veuillez utiliser la fonction de réparation pour vous reconnecter."
     },
     "motiontype": {
         "null": "Autre",

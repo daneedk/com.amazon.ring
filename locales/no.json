@@ -34,9 +34,10 @@
         "debuginfo": "Åpne nettleserkonsollen for å vise feilsøkingsloggen"
     },
     "devices": {
-        "unauthenticated": {
-            "no": "Homey er ikke lenger autentisert på Ring. Bruk reparasjonsfunksjonen for å autentisere på nytt."
-        }
+        "unauthenticated": "Homey er ikke lenger autentisert på Ring. Bruk reparasjonsfunksjonen for å autentisere på nytt."
+    },
+    "notifications": {
+        "unauthenticated": "Ring-appen er ikke lenger autentisert hos Ring. Bruk reparasjonsfunksjonen for å koble til på nytt."
     },
     "motiontype": {
         "null": "Annet",

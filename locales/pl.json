@@ -40,6 +40,9 @@
     "devices": {
         "unauthenticated": "Homey nie jest już uwierzytelniony w Ring. Skorzystaj z funkcji naprawy, aby ponownie uwierzytelnić"
     },
+    "notifications": {
+        "unauthenticated": "Aplikacja Ring nie jest już uwierzytelniona w Ring. Skorzystaj z funkcji naprawy, aby ponownie się połączyć."
+    },
     "motiontype": {
         "null": "Inne",
         "human": "Człowiek",

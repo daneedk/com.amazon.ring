@@ -34,9 +34,10 @@
         "debuginfo": "Öppna webbläsarkonsolen för att visa felsökningsloggen"
     },
     "devices": {
-        "unauthenticated": {
-            "sv": "Homey är inte längre autentiserad på Ring. Använd reparationsfunktionen för att autentisera igen."
-        }
+        "unauthenticated": "Homey är inte längre autentiserad på Ring. Använd reparationsfunktionen för att autentisera igen."
+    },
+    "notifications": {
+        "unauthenticated": "Ring-appen är inte längre autentiserad hos Ring. Använd reparationsfunktionen för att återansluta."
     },
     "motiontype": {
         "null": "Annat",

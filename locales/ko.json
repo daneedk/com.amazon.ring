@@ -40,6 +40,9 @@
   "devices": {
     "unauthenticated": "Homey가 더 이상 Ring에서 인증되지 않았습니다. 복구 기능을 사용하여 다시 인증하세요."
   },
+  "notifications": {
+    "unauthenticated": "Ring 앱이 더 이상 Ring에서 인증되지 않았습니다. 복구 기능을 사용하여 다시 연결하세요."
+  },
   "motiontype": {
     "null": "기타",
     "human": "사람",

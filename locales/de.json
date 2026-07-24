@@ -34,9 +34,10 @@
         "debuginfo": "Öffnen Sie die Browserkonsole, um das Debug-Protokoll anzuzeigen"
     },
     "devices": {
-        "unauthenticated": {
-            "de": "Homey ist bei Ring nicht mehr authentifiziert. Bitte verwenden Sie die Reparaturfunktion, um sich erneut zu authentifizieren."
-        }
+        "unauthenticated": "Homey ist bei Ring nicht mehr authentifiziert. Bitte verwenden Sie die Reparaturfunktion, um sich erneut zu authentifizieren."
+    },
+    "notifications": {
+        "unauthenticated": "Die Ring-App ist nicht mehr bei Ring authentifiziert. Bitte repariere die App, um die Verbindung wiederherzustellen."
     },
     "motiontype": {
         "null": "Andere",

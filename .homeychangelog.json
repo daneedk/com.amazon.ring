@@ -686,16 +686,16 @@
       "sv": "• Lade till inställning för rörelseaktiverad belysning med flödeskort för att aktivera/inaktivera den"
   },
   "2.14.25": {
-      "en": "",
-      "da": "",
-      "de": "",
-      "es": "",
-      "fr": "",
-      "it": "",
-      "ko": "",
-      "nl": "",
-      "no": "",
-      "pl": "",
-      "sv": ""
+    "en": "Added timeline notification when authentication at Ring is lost",
+    "da": "Tilføjet tidslinjenotifikation, når godkendelse hos Ring mistes",
+    "de": "Timeline-Benachrichtigung hinzugefügt, wenn die Authentifizierung bei Ring verloren geht",
+    "es": "Añadida notificación en la línea de tiempo cuando se pierde la autenticación en Ring",
+    "fr": "Ajout d'une notification dans la chronologie en cas de perte de l'authentification chez Ring",
+    "it": "Aggiunta notifica sulla timeline quando l'autenticazione con Ring viene persa",
+    "ko": "Ring 인증이 끊겼을 때 타임라인 알림 추가",
+    "nl": "Tijdlijnmelding toegevoegd wanneer de authenticatie bij Ring verloren gaat",
+    "no": "Lagt til tidslinjevarsel når autentisering hos Ring går tapt",
+    "pl": "Dodano powiadomienie w linii czasu w przypadku utraty uwierzytelnienia w Ring",
+    "sv": "Lade till tidslinjenotis när autentiseringen hos Ring går förlorad"
   }
 }

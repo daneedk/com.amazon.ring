@@ -34,9 +34,10 @@
         "debuginfo": "Open de browserconsole om het debuglog te bekijken"
     },
     "devices": {
-        "unauthenticated": {
-            "nl": "Homey is niet langer geauthenticeerd bij Ring. Gebruik de reparatiefunctie om opnieuw te authenticeren."
-        }
+        "unauthenticated": "Homey is niet langer geauthenticeerd bij Ring. Gebruik de reparatiefunctie om opnieuw te authenticeren."
+    },
+    "notifications": {
+        "unauthenticated": "De Ring-app is niet langer geauthenticeerd bij Ring. Gebruik de reparatiefunctie om opnieuw te verbinden."
     },
     "motiontype": {
         "null": "Overig",

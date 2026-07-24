@@ -34,9 +34,10 @@
         "debuginfo": "Åbn browserkonsollen for at se fejlloggen"
     },
     "devices": {
-        "unauthenticated": {
-            "da": "Homey er ikke længere godkendt hos Ring. Brug venligst reparationfunktionen til at godkende igen."
-        }
+        "unauthenticated": "Homey er ikke længere godkendt hos Ring. Brug venligst reparationfunktionen til at godkende igen."
+    },
+    "notifications": {
+        "unauthenticated": "Ring-appen er ikke længere godkendt hos Ring. Brug reparationsfunktionen for at oprette forbindelse igen."
     },
     "motiontype": {
         "null": "Andet",

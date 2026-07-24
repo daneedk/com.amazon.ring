@@ -40,6 +40,9 @@
     "devices": {
         "unauthenticated": "Homey is no longer authenticated at Ring. Please use the repair function to reauthenticate"
     },
+    "notifications": {
+        "unauthenticated": "The Ring app is no longer authenticated with Ring. Please repair the app to reconnect."
+    },
     "motiontype": {
         "null": "Other",
         "human": "Human",
