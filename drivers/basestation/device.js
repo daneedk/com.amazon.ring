@@ -257,7 +257,7 @@ class DeviceBasestation extends Device {
                 const zid = data?.alarmInfo?.faultedDevices?.[0];
                 const device = Object.values(this.homey.app._devices).find(d => d.getData()?.zid === zid);
                 const nameSymbol = Object.getOwnPropertySymbols(device ?? {}).find(s => s.description === 'name');
-                const name = device?.[nameSymbol];
+                const name = device?.[nameSymbol] ?? zid ?? 'unknown device';
                 const tokens = { faultedDevices: name }
                 
                 this.driver.entryDelay(this, tokens);

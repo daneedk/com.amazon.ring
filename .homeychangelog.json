@@ -697,5 +697,18 @@
     "no": "Lagt til tidslinjevarsel når autentisering hos Ring går tapt",
     "pl": "Dodano powiadomienie w linii czasu w przypadku utraty uwierzytelnienia w Ring",
     "sv": "Lade till tidslinjenotis när autentiseringen hos Ring går förlorad"
+  },
+  "2.14.26": {
+    "en": "Better handling of unavailable devices",
+    "da": "Bedre håndtering af utilgængelige enheder",
+    "de": "Bessere Handhabung nicht verfügbarer Geräte",
+    "es": "Mejor manejo de dispositivos no disponibles",
+    "fr": "Meilleure gestion des appareils indisponibles",
+    "it": "Migliore gestione dei dispositivi non disponibili",
+    "ko": "사용할 수 없는 장치에 대한 처리 개선",
+    "nl": "Betere afhandeling van niet-beschikbare apparaten",
+    "no": "Bedre håndtering av utilgjengelige enheter",
+    "pl": "Lepsza obsługa niedostępnych urządzeń",
+    "sv": "Bättre hantering av otillgängliga enheter"
   }
 }
