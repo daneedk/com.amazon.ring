@@ -710,5 +710,18 @@
     "no": "Bedre håndtering av utilgjengelige enheter",
     "pl": "Lepsza obsługa niedostępnych urządzeń",
     "sv": "Bättre hantering av otillgängliga enheter"
+  },
+  "2.14.27": {
+    "en": "Additional logging",
+    "da": "Yderligere logging",
+    "de": "Zusätzliche Protokollierung",
+    "es": "Registro adicional",
+    "fr": "Journalisation supplémentaire",
+    "it": "Registrazione aggiuntiva",
+    "ko": "추가 로깅",
+    "nl": "Extra logging",
+    "no": "Ytterligere logging",
+    "pl": "Dodatkowe rejestrowanie",
+    "sv": "Ytterligare loggning"
   }
 }

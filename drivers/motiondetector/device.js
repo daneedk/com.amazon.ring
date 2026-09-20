@@ -6,7 +6,7 @@ const statusMapping = (status) => status !== "ok";
 class DeviceMotionDetector extends Device {
 
     _initDevice() {
-        this.log('_initDevice for', this.getName());
+        this.log('_initDevice for', this.getName(), { id: this.getData().id });
         // this.log('class:', this.getClass());
         // this.log('data:', this.getData());
 
