@@ -9,7 +9,7 @@ class DriverBasestation extends Driver {
         this.log('onInit');
 
         this._triggerModeChange = this.homey.flow.getDeviceTriggerCard('ring_alarm_mode_changed');
-        
+
         this._triggerCancelBurglarAlarm = this.homey.flow.getDeviceTriggerCard('alarm_burglar_false');
         this._triggerCancelFireAlarm = this.homey.flow.getDeviceTriggerCard('alarm_fire_false');
         this._triggerCancelMedicalAlarm = this.homey.flow.getDeviceTriggerCard('alarm_medical_false');
@@ -61,7 +61,7 @@ class DriverBasestation extends Driver {
         this._triggerCancelBurglarAlarm.trigger(device, tokens)
             .then()
             .catch(this.error);
- 
+
         this._triggerCancelFireAlarm.trigger(device, tokens)
             .then()
             .catch(this.error);
@@ -114,7 +114,7 @@ class DriverBasestation extends Driver {
         for (const device of result) {
             this.log('Device type found:', device.data.deviceType, device.data.name);
 
-            if (device.data.deviceType === 'hub.redsky') {
+            if (device.data.deviceType === 'hub.redsky' || device.data.deviceType === 'hub.kili') {
                 foundDevices.push({
                     name: device.data.name,
                     data: {

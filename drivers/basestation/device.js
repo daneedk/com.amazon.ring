@@ -12,8 +12,8 @@ class DeviceBasestation extends Device {
     _initDevice() {
         this.log('_initDevice for', this.getName(), { id: this.getData().id });
         // this.log('class:', this.getClass());
-        // this.log('data:', this.getData());      
-        
+        // this.log('data:', this.getData());
+
         this.setCapabilityValue('alarm_tamper', false)
             .catch(error => {this.error(error)});
         /*
@@ -100,7 +100,7 @@ class DeviceBasestation extends Device {
             this.error('isAlarmMode error:', error);
             throw error;
         }
-    }    
+    }
 
     _setAvailability(status) {
         if (status == 'authenticated') {
@@ -179,10 +179,10 @@ class DeviceBasestation extends Device {
         //     }
         //
 
-        // Process information received from the basestation (hub.redsky)
-        if ( data.deviceType == RingDeviceType["BaseStation"] ) {
+        // Process information received from the basestation (hub.redsky, hub.kili)
+        if ( data.deviceType == RingDeviceType["BaseStation"] || data.deviceType == RingDeviceType["BaseStationPro"] ) {
             //this.log('=============================================')
-            //this.log('Received from the basestation (hub.redsky):', data)
+            //this.log('Received from the basestation (hub.redsky, hub.kili):', data)
             //this.log('=============================================')
 
             // Set capabilities
@@ -191,7 +191,7 @@ class DeviceBasestation extends Device {
             /*
             this.setCapabilityValue('alarm_power', statusMapping(data.acStatus))
                 .catch(error => {this.error(error)});
-            
+
             this.setCapabilityValue('alarm_connectivity', statusMapping(data.commStatus))
                 .catch(error => {this.error(error)});
             */
@@ -199,7 +199,7 @@ class DeviceBasestation extends Device {
                 .catch(error => {this.error(error)});
 
             this.setCapabilityValue('connection_source', data.networkConnection)
-                .catch(error => {this.error(error)});    
+                .catch(error => {this.error(error)});
 
             // Set Battery Capability
             let battery = 100;
@@ -210,7 +210,7 @@ class DeviceBasestation extends Device {
                 } else {
                     battery = parseInt(data.batteryStatus);
                 }
-                if (battery > 100) { battery = 100; }            
+                if (battery > 100) { battery = 100; }
                 this.setCapabilityValue('measure_battery', battery)
                     .catch(error => {this.error(error)});
             }
@@ -233,13 +233,13 @@ class DeviceBasestation extends Device {
                 this.driver.modeChangeOn(this,tokens);
                 this.log('Basestation', data.name, 'in', system.location.name ,'changed from',system.oldmode ,'to',data.mode);
                 system.oldmode = data.mode;
-                
+
             }
 
             this.log(data.alarmInfo);
 
             if (data.alarmInfo === undefined) return;
-            
+
             if (data.alarmInfo === null) {
                 this.log('Alarm canceled');
                 this.setCapabilityValue('alarm_burglar', false)
@@ -247,9 +247,9 @@ class DeviceBasestation extends Device {
                 this.setCapabilityValue('alarm_fire', false)
                     .catch(error => {this.error(error)});
                 this.setCapabilityValue('alarm_medical', false)
-                    .catch(error => {this.error(error)});                 
+                    .catch(error => {this.error(error)});
                 this.setCapabilityValue('alarm_panic', false)
-                    .catch(error => {this.error(error)});    
+                    .catch(error => {this.error(error)});
                 this.driver.cancelAlarm(this, { timestamp: new Date().toISOString() });
             } else if (data.alarmInfo.state === 'entry-delay') {
                 this.log('Entry Delay', data.alarmInfo?.faultedDevices[0]);
@@ -259,12 +259,12 @@ class DeviceBasestation extends Device {
                 const nameSymbol = Object.getOwnPropertySymbols(device ?? {}).find(s => s.description === 'name');
                 const name = device?.[nameSymbol] ?? zid ?? 'unknown device';
                 const tokens = { faultedDevices: name }
-                
+
                 this.driver.entryDelay(this, tokens);
             } else if (data.alarmInfo.state === 'burglar-alarm') {
                 this.log('Burglar Alarm');
                 this.setCapabilityValue('alarm_burglar', true)
-                    .catch(error => {this.error(error)});                
+                    .catch(error => {this.error(error)});
                 this.driver.burglarAlarm(this, { timestamp: new Date().toISOString() });
             } else if (data.alarmInfo.state === 'keypad-fire-alarm') {
                 this.log('Fire Alarm');
@@ -274,7 +274,7 @@ class DeviceBasestation extends Device {
             } else if (data.alarmInfo.state === 'keypad-medical-alarm') {
                 this.log('Medical Alarm');
                 this.setCapabilityValue('alarm_medical', true)
-                    .catch(error => {this.error(error)}); 
+                    .catch(error => {this.error(error)});
                 this.driver.medicalAlarm(this, { timestamp: new Date().toISOString() });
             }  else if (data.alarmInfo.state === 'panic') {
                 this.log('Panic Alarm');
@@ -285,14 +285,14 @@ class DeviceBasestation extends Device {
 
         }
     }
-    
+
     changeAlarmMode(args) {
         if (this._device instanceof Error)
             throw this._device;
 
         return this.homey.app._api.setLocationMode(this.getData().location,args.mode)
-            .then(result => { 
-                return result 
+            .then(result => {
+                return result
             })
             .catch(error => {
                 this.error(error);

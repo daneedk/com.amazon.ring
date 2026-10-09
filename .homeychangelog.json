@@ -723,5 +723,18 @@
     "no": "Ytterligere logging",
     "pl": "Dodatkowe rejestrowanie",
     "sv": "Ytterligare loggning"
+  },
+  "2.14.28": {
+    "en": "Support Ring Alarm Pro",
+    "da": "Understøttelse af Ring Alarm Pro",
+    "de": "Unterstützung für Ring Alarm Pro",
+    "es": "Compatibilidad con Ring Alarm Pro",
+    "fr": "Prise en charge de Ring Alarm Pro",
+    "it": "Supporto per Ring Alarm Pro",
+    "ko": "Ring Alarm Pro 지원",
+    "nl": "Ondersteuning voor Ring Alarm Pro",
+    "no": "Støtte for Ring Alarm Pro",
+    "pl": "Obsługa Ring Alarm Pro",
+    "sv": "Stöd för Ring Alarm Pro"
   }
 }
