@@ -899,12 +899,14 @@ class Parser extends emitter_1.default {
     #messageSize = 0;
     #handshakeComplete = false;
     #isWaitingForData = true;
+    #isDestroyed = false;
     constructor(socket) {
         super();
         this.#socket = socket;
         this.#socket.on('data', this.#handleData);
     }
     destroy() {
+        this.#isDestroyed = true;
         this.#isWaitingForData = false;
         this.#socket.removeListener('data', this.#handleData);
     }
@@ -921,6 +923,12 @@ class Parser extends emitter_1.default {
         }
     };
     #waitForData() {
+        // Drain complete frames without recursive calls between parser states.
+        while (!this.#isDestroyed && !this.#isWaitingForData) {
+            this.#processData();
+        }
+    }
+    #processData() {
         logger_1.default.debug(`waitForData state: ${this.#state}`);
         let minBytesNeeded = 0;
         switch (this.#state) {
@@ -949,6 +957,7 @@ class Parser extends emitter_1.default {
         switch (this.#state) {
             case constants_1.ProcessingState.MCS_VERSION_TAG_AND_SIZE:
                 this.#handleGotVersion();
+                if (this.#isDestroyed) return;
                 this.#handleGotMessageTag();
                 this.#handleGotMessageSize();
                 break;
@@ -1002,14 +1011,14 @@ class Parser extends emitter_1.default {
         // above to be mid-packet like: new ProtobufJS.BufferReader(this.#data.slice(0, 1))
         if (incompleteSizePacket) {
             this.#state = constants_1.ProcessingState.MCS_SIZE;
-            this.#waitForData();
+            // Keep the partial varint, but retry only when the socket adds bytes.
+            this.#isWaitingForData = true;
             return;
         }
         this.#data = this.#data.slice(reader.pos);
         logger_1.default.debug(`Proto size: ${this.#messageSize}`);
         if (this.#messageSize > 0) {
             this.#state = constants_1.ProcessingState.MCS_PROTO_BYTES;
-            this.#waitForData();
         }
         else {
             this.#handleGotMessageBytes();
@@ -1032,7 +1041,6 @@ class Parser extends emitter_1.default {
             // Continue reading data.
             logger_1.default.debug(`Continuing data read. Buffer size is ${this.#data.length}, expecting ${this.#messageSize}`);
             this.#state = constants_1.ProcessingState.MCS_PROTO_BYTES;
-            this.#waitForData();
             return;
         }
         const buffer = this.#data.slice(0, this.#messageSize);
@@ -1059,7 +1067,6 @@ class Parser extends emitter_1.default {
         this.#messageTag = 0;
         this.#messageSize = 0;
         this.#state = constants_1.ProcessingState.MCS_TAG_AND_SIZE;
-        this.#waitForData();
     }
     #buildProtobufFromTag(tag) {
         switch (tag) {
