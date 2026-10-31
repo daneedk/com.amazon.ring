@@ -11,7 +11,7 @@ class DeviceMotionDetector extends Device {
         // this.log('data:', this.getData());
 
         //this.device = {}
-        
+
         this.setCapabilityValue('alarm_motion', false)
             .catch(error => {this.error(error)});
 
@@ -27,8 +27,8 @@ class DeviceMotionDetector extends Device {
 
         //this.homey.on('ringOnAlarmData',this._ringOnAlarmData.bind(this));
 
-    }  
-        
+    }
+
     _setAvailability(status) {
         if (status == 'authenticated') {
             try {
@@ -81,7 +81,7 @@ class DeviceMotionDetector extends Device {
 
         if (data.batteryLevel != null) {
             battery = parseInt(data.batteryLevel);
-            if (battery > 100) { battery = 100; }            
+            if (battery > 100) { battery = 100; }
             if ( this.getCapabilityValue('measure_battery') != battery) {
                 this.setCapabilityValue('measure_battery', battery)
                     .catch(error => {this.error(error)});

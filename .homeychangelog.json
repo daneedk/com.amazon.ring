@@ -736,5 +736,18 @@
     "no": "Støtte for Ring Alarm Pro",
     "pl": "Obsługa Ring Alarm Pro",
     "sv": "Stöd för Ring Alarm Pro"
+  },
+  "2.14.29": {
+    "en": "Fixed Ring Alarm devices not loading on slow connections",
+    "da": "Rettet: Ring Alarm-enheder blev ikke indlæst ved langsomme forbindelser",
+    "de": "Behoben: Ring Alarm-Geräte wurden bei langsamen Verbindungen nicht geladen",
+    "es": "Corregido: los dispositivos Ring Alarm no se cargaban con conexiones lentas",
+    "fr": "Correction : les appareils Ring Alarm ne se chargeaient pas avec une connexion lente",
+    "it": "Corretto: i dispositivi Ring Alarm non venivano caricati con connessioni lente",
+    "ko": "느린 연결에서 Ring Alarm 기기가 로드되지 않던 문제 수정",
+    "nl": "Ring Alarm-apparaten werden niet geladen bij een trage verbinding, opgelost",
+    "no": "Rettet: Ring Alarm-enheter ble ikke lastet ved trege tilkoblinger",
+    "pl": "Naprawiono: urządzenia Ring Alarm nie ładowały się przy wolnym połączeniu",
+    "sv": "Åtgärdat: Ring Alarm-enheter laddades inte vid långsamma anslutningar"
   }
 }
