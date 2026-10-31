@@ -9110,6 +9110,19 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports["default"] = decrypt;
 const crypto_1 = __importDefault(__nccwpck_require__(6113));
 const http_ece_1 = __importDefault(__nccwpck_require__(15066));
+// PATCHED (push-receiver 4.4.0 fix, Eneris/push-receiver#33): remove once ring-client-api ships push-receiver >= 4.3.1
+// Parses a header value like "dh=BASE64; p256ecdsa=BASE64" into { dh: "BASE64", p256ecdsa: "BASE64" }
+function parseHeaderParams(header) {
+    return Object.fromEntries(header
+        .split(';')
+        .map(part => {
+        const [key, ...rest] = part.trim().split('=');
+        const trimmedKey = key.trim();
+        const value = rest.join('=').trim();
+        return [trimmedKey, value];
+    })
+        .filter(([key]) => key !== ''));
+}
 // https://tools.ietf.org/html/draft-ietf-webpush-encryption-03
 function decrypt(object, keys) {
     const cryptoKey = object.appData.find(item => item.key === 'crypto-key');
@@ -9118,14 +9131,22 @@ function decrypt(object, keys) {
     const salt = object.appData.find(item => item.key === 'encryption');
     if (!salt)
         throw new Error('salt is missing');
+    const cryptoKeyParams = parseHeaderParams(cryptoKey.value);
+    const saltParams = parseHeaderParams(salt.value);
+    if (!cryptoKeyParams.dh)
+        throw new Error('crypto-key header is missing dh parameter');
+    if (!saltParams.salt)
+        throw new Error('encryption header is missing salt parameter');
     const dh = crypto_1.default.createECDH('prime256v1');
     dh.setPrivateKey(keys.privateKey, 'base64');
     const params = {
         version: 'aesgcm',
         authSecret: keys.authSecret,
-        dh: cryptoKey.value.slice(3),
+        //dh: cryptoKey.value.slice(3),
+        dh: cryptoKeyParams.dh,
         privateKey: dh,
-        salt: salt.value.slice(5),
+        //salt: salt.value.slice(5),
+        salt: saltParams.salt,
     };
     const decrypted = http_ece_1.default.decrypt(object.rawData, params);
     return JSON.parse(decrypted);
@@ -9743,16 +9764,16 @@ class ASN1 {
         }
         const utc = buf.toString('utf8');
         /* The following formats can be used:
-    
+
           YYMMDDhhmmZ
           YYMMDDhhmm+hh'mm'
           YYMMDDhhmm-hh'mm'
           YYMMDDhhmmssZ
           YYMMDDhhmmss+hh'mm'
           YYMMDDhhmmss-hh'mm'
-    
+
           Where:
-    
+
           YY is the least significant two digits of the year
           MM is the month (01 to 12)
           DD is the day (01 to 31)
@@ -9847,7 +9868,7 @@ class ASN1 {
         }
         const gentime = buf.toString('utf8');
         /* The following formats can be used:
-    
+
           YYYYMMDDHHMMSS
           YYYYMMDDHHMMSS.fff
           YYYYMMDDHHMMSSZ
@@ -9856,9 +9877,9 @@ class ASN1 {
           YYYYMMDDHHMMSS.fff+hh'mm'
           YYYYMMDDHHMMSS-hh'mm'
           YYYYMMDDHHMMSS.fff-hh'mm'
-    
+
           Where:
-    
+
           YYYY is the year
           MM is the month (01 to 12)
           DD is the day (01 to 31)
@@ -18928,19 +18949,19 @@ tslib_1.__decorate([
 var __webpack_unused_export__;
 /*!
  * MIT License
- * 
+ *
  * Copyright (c) Peculiar Ventures. All rights reserved.
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -18948,7 +18969,7 @@ var __webpack_unused_export__;
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 
@@ -27358,23 +27379,23 @@ exports.T = new JSPack();
  * Copyright (c) 2014, GMO GlobalSign
  * Copyright (c) 2015-2022, Peculiar Ventures
  * All rights reserved.
- * 
+ *
  * Author 2014-2019, Yury Strozhevsky
- * 
+ *
  * Redistribution and use in source and binary forms, with or without modification,
  * are permitted provided that the following conditions are met:
- * 
+ *
  * * Redistributions of source code must retain the above copyright notice, this
  *   list of conditions and the following disclaimer.
- * 
+ *
  * * Redistributions in binary form must reproduce the above copyright notice, this
  *   list of conditions and the following disclaimer in the documentation and/or
  *   other materials provided with the distribution.
- * 
+ *
  * * Neither the name of the copyright holder nor the names of its
  *   contributors may be used to endorse or promote products derived from
  *   this software without specific prior written permission.
- * 
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -27385,7 +27406,7 @@ exports.T = new JSPack();
  * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
+ *
  */
 
 
@@ -38345,7 +38366,7 @@ function writeHeader(header) {
  * receiver.  |params.privateKey| is used to establish a shared secret.  Key
  * pairs can be created using |crypto.createECDH()|.
  */
-function encrypt(buffer, params, keyLookupCallback) {  
+function encrypt(buffer, params, keyLookupCallback) {
   if (!Buffer.isBuffer(buffer)) {
     throw new Error('buffer argument must be a Buffer');
   }
@@ -52297,19 +52318,19 @@ BufferWriter._configure();
 "use strict";
 /*!
  * MIT License
- * 
+ *
  * Copyright (c) 2017-2024 Peculiar Ventures, LLC
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -52317,7 +52338,7 @@ BufferWriter._configure();
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
- * 
+ *
  */
 
 
@@ -129039,7 +129060,7 @@ exports.wifiInterfaces = wifiInterfaces;
 // GENERATED FILE. DO NOT EDIT.
 var ipCodec = (function(exports) {
   "use strict";
-  
+
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
@@ -129057,16 +129078,16 @@ var ipCodec = (function(exports) {
     name: 'v4',
     size: v4Size,
     isFormat: ip => v4Regex.test(ip),
-  
+
     encode(ip, buff, offset) {
       offset = ~~offset;
       buff = buff || new Uint8Array(offset + v4Size);
       const max = ip.length;
       let n = 0;
-  
+
       for (let i = 0; i < max;) {
         const c = ip.charCodeAt(i++);
-  
+
         if (c === 46) {
           // "."
           buff[offset++] = n;
@@ -129075,23 +129096,23 @@ var ipCodec = (function(exports) {
           n = n * 10 + (c - 48);
         }
       }
-  
+
       buff[offset] = n;
       return buff;
     },
-  
+
     decode(buff, offset) {
       offset = ~~offset;
       return `${buff[offset++]}.${buff[offset++]}.${buff[offset++]}.${buff[offset]}`;
     }
-  
+
   };
   exports.v4 = v4;
   const v6 = {
     name: 'v6',
     size: v6Size,
     isFormat: ip => ip.length > 0 && v6Regex.test(ip),
-  
+
     encode(ip, buff, offset) {
       offset = ~~offset;
       let end = offset + v6Size;
@@ -129105,10 +129126,10 @@ var ipCodec = (function(exports) {
       // non-standard compliant encodings that may go beyond
       // the boundary limits. if (offset < end) checks should
       // not be necessary...
-  
+
       for (let i = 0; i < ip.length; i++) {
         let c = ip.charCodeAt(i);
-  
+
         if (c === 58) {
           // :
           if (prevColon) {
@@ -129136,11 +129157,11 @@ var ipCodec = (function(exports) {
               if (offset < end - 1) buff[offset + 1] = hexN & 0xff;
               offset += 2;
             }
-  
+
             hexN = 0;
             decN = 0;
           }
-  
+
           prevColon = true;
           useDec = false;
         } else if (c === 46) {
@@ -129153,22 +129174,22 @@ var ipCodec = (function(exports) {
           useDec = true;
         } else {
           prevColon = false;
-  
+
           if (c >= 97) {
             c -= 87; // a-f ... 97~102 -87 => 10~15
           } else if (c >= 65) {
             c -= 55; // A-F ... 65~70 -55 => 10~15
           } else {
             c -= 48; // 0-9 ... starting from charCode 48
-  
+
             decN = decN * 10 + c;
           } // We don't know yet if its a dec or hex number
-  
-  
+
+
           hexN = (hexN << 4) + c;
         }
       }
-  
+
       if (prevColon === false) {
         // Commiting last number
         if (useDec === true) {
@@ -129192,16 +129213,16 @@ var ipCodec = (function(exports) {
         // and the end. To treat the end with priority we need to move all
         // written data two bytes to the right.
         offset += 2;
-  
+
         for (let i = Math.min(offset - 1, end - 1); i >= fill + 2; i--) {
           buff[i] = buff[i - 2];
         }
-  
+
         buff[fill] = 0;
         buff[fill + 1] = 0;
         fill = offset;
       }
-  
+
       if (fill !== offset && fill !== -1) {
         // Move the written numbers to the end while filling the everything
         // "fill" to the bytes with zeros.
@@ -129209,7 +129230,7 @@ var ipCodec = (function(exports) {
           // Non Standard support, when the cursor exceeds bounds.
           offset = end - 2;
         }
-  
+
         while (end > fill) {
           buff[--end] = offset < end && offset > fill ? buff[--offset] : 0;
         }
@@ -129219,67 +129240,67 @@ var ipCodec = (function(exports) {
           buff[offset++] = 0;
         }
       }
-  
+
       return buff;
     },
-  
+
     decode(buff, offset) {
       offset = ~~offset;
       let result = '';
-  
+
       for (let i = 0; i < v6Size; i += 2) {
         if (i !== 0) {
           result += ':';
         }
-  
+
         result += (buff[offset + i] << 8 | buff[offset + i + 1]).toString(16);
       }
-  
+
       return result.replace(/(^|:)0(:0)*:0(:|$)/, '$1::$3').replace(/:{3,4}/, '::');
     }
-  
+
   };
   exports.v6 = v6;
   const name = 'ip';
   exports.name = name;
-  
+
   function sizeOf(ip) {
     if (v4.isFormat(ip)) return v4.size;
     if (v6.isFormat(ip)) return v6.size;
     throw Error(`Invalid ip address: ${ip}`);
   }
-  
+
   function familyOf(string) {
     return sizeOf(string) === v4.size ? 1 : 2;
   }
-  
+
   function encode(ip, buff, offset) {
     offset = ~~offset;
     const size = sizeOf(ip);
-  
+
     if (typeof buff === 'function') {
       buff = buff(offset + size);
     }
-  
+
     if (size === v4.size) {
       return v4.encode(ip, buff, offset);
     }
-  
+
     return v6.encode(ip, buff, offset);
   }
-  
+
   function decode(buff, offset, length) {
     offset = ~~offset;
     length = length || buff.length - offset;
-  
+
     if (length === v4.size) {
       return v4.decode(buff, offset, length);
     }
-  
+
     if (length === v6.size) {
       return v6.decode(buff, offset, length);
     }
-  
+
     throw Error(`Invalid buffer size needs to be ${v4.size} for v4 or ${v6.size} for v6.`);
   }
   return "default" in exports ? exports.default : exports;
@@ -130433,7 +130454,7 @@ const swap32IfBE = (/* unused pure expression or super */ null && (isLE
     ? (u) => u
     : byteSwap32));
 // Built-in hex conversion https://caniuse.com/mdn-javascript_builtins_uint8array_fromhex
-const hasHexBuiltin = /* @__PURE__ */ (() => 
+const hasHexBuiltin = /* @__PURE__ */ (() =>
 // @ts-ignore
 typeof Uint8Array.from([]).toHex === 'function' && typeof Uint8Array.fromHex === 'function')();
 // Array where index 0xf0 (240) is mapped to string 'f0'
@@ -150568,7 +150589,7 @@ class WebrtcConnection extends Subscribed {
                 logError(e);
                 this.callEnded();
             });
-        }), 
+        }),
         // The ring-edge session needs a ping every 5 seconds to keep the connection alive
         (0,cjs.interval)(5000).subscribe(() => {
             this.sendSessionMessage('ping');
@@ -152030,7 +152051,7 @@ class Location extends Subscribed {
         this.hasAlarmBaseStation = this.options.hasAlarmBaseStation;
         this.addSubscriptions(
         // start listening for devices immediately
-        this.onDevices.subscribe(), 
+        this.onDevices.subscribe(),
         // watch for sessions to come online
         this.onSessionInfo.subscribe((sessions) => {
             sessions.forEach(({ connectionStatus, assetUuid }) => {
@@ -152916,7 +152937,7 @@ module.exports = {"i8":"5.30.7"};
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __nccwpck_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -152930,7 +152951,7 @@ module.exports = {"i8":"5.30.7"};
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		var threw = true;
 /******/ 		try {
@@ -152939,14 +152960,14 @@ module.exports = {"i8":"5.30.7"};
 /******/ 		} finally {
 /******/ 			if(threw) delete __webpack_module_cache__[moduleId];
 /******/ 		}
-/******/ 	
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	/* webpack/runtime/create fake namespace object */
 /******/ 	(() => {
@@ -152977,7 +152998,7 @@ module.exports = {"i8":"5.30.7"};
 /******/ 			return ns;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports
@@ -152989,12 +153010,12 @@ module.exports = {"i8":"5.30.7"};
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__nccwpck_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -153005,7 +153026,7 @@ module.exports = {"i8":"5.30.7"};
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__nccwpck_require__.nmd = (module) => {
@@ -153014,18 +153035,18 @@ module.exports = {"i8":"5.30.7"};
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/compat */
-/******/ 	
+/******/
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
-/******/ 	
+/******/
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module used 'module' so it can't be inlined
 /******/ 	var __webpack_exports__ = __nccwpck_require__(66052);
 /******/ 	module.exports = __webpack_exports__;
-/******/ 	
+/******/
 /******/ })()
 ;

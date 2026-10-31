@@ -749,5 +749,18 @@
     "no": "Rettet: Ring Alarm-enheter ble ikke lastet ved trege tilkoblinger",
     "pl": "Naprawiono: urządzenia Ring Alarm nie ładowały się przy wolnym połączeniu",
     "sv": "Åtgärdat: Ring Alarm-enheter laddades inte vid långsamma anslutningar"
+  },
+  "2.14.30": {
+    "en": "Fixed doorbell ring and camera motion events no longer working",
+    "da": "Rettet: ring- og bevægelseshændelser fra dørklokker og kameraer virkede ikke længere",
+    "de": "Behoben: Klingel- und Bewegungsereignisse von Türklingeln und Kameras funktionierten nicht mehr",
+    "es": "Corregido: los eventos de timbre y movimiento de timbres y cámaras ya no funcionaban",
+    "fr": "Correction : les événements de sonnerie et de mouvement des sonnettes et caméras ne fonctionnaient plus",
+    "it": "Corretto: gli eventi di squillo e movimento di campanelli e telecamere non funzionavano più",
+    "ko": "초인종 및 카메라의 벨 및 동작 이벤트가 더 이상 작동하지 않던 문제 수정",
+    "nl": "Bel- en bewegingsgebeurtenissen van deurbellen en camera's werkten niet meer, opgelost",
+    "no": "Rettet: ringe- og bevegelseshendelser fra dørklokker og kameraer fungerte ikke lenger",
+    "pl": "Naprawiono: zdarzenia dzwonka i ruchu z dzwonków do drzwi i kamer przestały działać",
+    "sv": "Åtgärdat: ring- och rörelsehändelser från dörrklockor och kameror fungerade inte längre"
   }
 }
