@@ -11,7 +11,7 @@ class DriverStickUpCam extends Driver {
 
         if (!this.homey.__alarmMotionListenerRegistered) {
             this.homey.__alarmMotionListenerRegistered = true;
-            
+
             this.homey.flow.getConditionCard('alarm_motion')
                 .registerRunListener(async ( args, state ) => {
                     return args.device.getCapabilityValue('alarm_motion');
@@ -22,7 +22,7 @@ class DriverStickUpCam extends Driver {
             .registerRunListener(async ( args, state ) => {
                 return args.device.isLightOn(); // Promise<boolean>
             })
-            
+
         this.homey.flow.getActionCard('stickupcam_grab_snapshot')
             .registerRunListener((args, state) => args.device.grabImage());
 
@@ -43,7 +43,7 @@ class DriverStickUpCam extends Driver {
 
         this.homey.flow.getActionCard('stickupcam_disable_motion')
             .registerRunListener((args, state) => args.device.disableMotion());
-        
+
         this.homey.flow.getActionCard('stickupcam_enable_motion_alerts')
             .registerRunListener((args, state) => args.device.setMotionAlerts(true));
 
@@ -75,10 +75,32 @@ class DriverStickUpCam extends Driver {
 
         try {
             const result = await this.homey.app.getRingDevices();
-            return result.stickupCams.map(device => ({
-                name: device.description,
-                data: { id: device.id }
-            }));
+            // return result.stickupCams.map(device => ({
+            //     name: device.description,
+            //     data: { id: device.id }
+            // }));
+            const icons = {
+                spotlightw_v2: '/spotlight_cam.svg',
+                hp_cam_v2: '/spotlight_cam.svg',
+                stickup_cam_v4: '/spotlight_cam.svg',
+                stickup_cam_longfin: '/spotlight_cam.svg',
+                cocoa_spotlight: '/spotlight_cam.svg',
+                hp_cam_v1: '/floodlight_cam.svg',
+                floodlight_v1: '/floodlight_cam.svg',
+                floodlight_v2: '/floodlight_cam.svg',
+                floodlight_pro: '/floodlight_cam.svg',
+                cocoa_floodlight: '/floodlight_cam.svg',
+                stickup_cam_mini: '/indoor_cam.svg'
+            };
+            return result.stickupCams.map(device => {
+                this.log('onPairListDevices', device.description, device.kind);
+                const icon = icons[device.kind];
+                return {
+                    name: device.description,
+                    data: { id: device.id },
+                    ...(icon && { icon })
+                };
+            });
         } catch (error) {
             this.error(error);
             throw error;

@@ -762,5 +762,18 @@
     "no": "Rettet: ringe- og bevegelseshendelser fra dørklokker og kameraer fungerte ikke lenger",
     "pl": "Naprawiono: zdarzenia dzwonka i ruchu z dzwonków do drzwi i kamer przestały działać",
     "sv": "Åtgärdat: ring- och rörelsehändelser från dörrklockor och kameror fungerade inte längre"
+  },
+  "2.14.31": {
+    "en": "• Fixed login failing when the Ring password contains certain special characters • Added matching camera icons (requires re-pairing the camera) • Fixed live video not working on Ring Floodlight cameras",
+    "da": "• Rettet: login mislykkedes, når Ring-adgangskoden indeholdt visse specialtegn • Tilføjet matchende kameraikoner (kræver at kameraet parres igen) • Rettet: live video virkede ikke på Ring Floodlight-kameraer",
+    "de": "• Behoben: Anmeldung schlug fehl, wenn das Ring-Passwort bestimmte Sonderzeichen enthielt • Passende Kamerasymbole hinzugefügt (erfordert erneutes Koppeln der Kamera) • Behoben: Live-Video funktionierte nicht bei Ring Floodlight-Kameras",
+    "es": "• Corregido: el inicio de sesión fallaba cuando la contraseña de Ring contenía ciertos caracteres especiales • Añadidos iconos de cámara correspondientes (requiere volver a emparejar la cámara) • Corregido: el vídeo en directo no funcionaba en las cámaras Ring Floodlight",
+    "fr": "• Correction : la connexion échouait lorsque le mot de passe Ring contenait certains caractères spéciaux • Ajout d'icônes de caméra correspondantes (nécessite de réappairer la caméra) • Correction : la vidéo en direct ne fonctionnait pas sur les caméras Ring Floodlight",
+    "it": "• Corretto: l'accesso non riusciva quando la password Ring conteneva determinati caratteri speciali • Aggiunte icone corrispondenti per le telecamere (richiede di riassociare la telecamera) • Corretto: il video live non funzionava sulle telecamere Ring Floodlight",
+    "ko": "• Ring 비밀번호에 특정 특수 문자가 포함된 경우 로그인이 실패하던 문제 수정 • 모델에 맞는 카메라 아이콘 추가 (카메라를 다시 페어링해야 함) • Ring Floodlight 카메라에서 라이브 영상이 작동하지 않던 문제 수정",
+    "nl": "• Inloggen mislukte als het Ring-wachtwoord bepaalde speciale tekens bevatte, opgelost • Passende camera-iconen toegevoegd (camera opnieuw koppelen vereist) • Live video werkte niet op Ring Floodlight-camera's, opgelost",
+    "no": "• Rettet: innlogging mislyktes når Ring-passordet inneholdt visse spesialtegn • Lagt til samsvarende kameraikoner (krever ny paring av kameraet) • Rettet: live video fungerte ikke på Ring Floodlight-kameraer",
+    "pl": "• Naprawiono: logowanie nie powiodło się, gdy hasło Ring zawierało określone znaki specjalne • Dodano pasujące ikony kamer (wymaga ponownego sparowania kamery) • Naprawiono: wideo na żywo nie działało w kamerach Ring Floodlight",
+    "sv": "• Åtgärdat: inloggningen misslyckades när Ring-lösenordet innehöll vissa specialtecken • Lagt till matchande kameraikoner (kräver att kameran paras om) • Åtgärdat: livevideo fungerade inte på Ring Floodlight-kameror"
   }
 }
