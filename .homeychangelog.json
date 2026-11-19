@@ -775,5 +775,18 @@
     "no": "• Rettet: innlogging mislyktes når Ring-passordet inneholdt visse spesialtegn • Lagt til samsvarende kameraikoner (krever ny paring av kameraet) • Rettet: live video fungerte ikke på Ring Floodlight-kameraer",
     "pl": "• Naprawiono: logowanie nie powiodło się, gdy hasło Ring zawierało określone znaki specjalne • Dodano pasujące ikony kamer (wymaga ponownego sparowania kamery) • Naprawiono: wideo na żywo nie działało w kamerach Ring Floodlight",
     "sv": "• Åtgärdat: inloggningen misslyckades när Ring-lösenordet innehöll vissa specialtecken • Lagt till matchande kameraikoner (kräver att kameran paras om) • Åtgärdat: livevideo fungerade inte på Ring Floodlight-kameror"
+  },
+  "2.14.32": {
+    "en": "Pairing now shows the actual reason when the Ring account could not be loaded (for example when the account has no locations), instead of a technical error",
+    "da": "Ved parring vises nu den faktiske årsag, når Ring-kontoen ikke kunne indlæses (f.eks. når kontoen ikke har nogen placeringer), i stedet for en teknisk fejl",
+    "de": "Beim Koppeln wird jetzt der tatsächliche Grund angezeigt, wenn das Ring-Konto nicht geladen werden konnte (z. B. wenn das Konto keine Standorte hat), statt eines technischen Fehlers",
+    "es": "Al emparejar ahora se muestra el motivo real cuando no se pudo cargar la cuenta de Ring (por ejemplo, cuando la cuenta no tiene ubicaciones), en lugar de un error técnico",
+    "fr": "Lors de l'appairage, la raison réelle est désormais affichée lorsque le compte Ring n'a pas pu être chargé (par exemple lorsque le compte n'a aucun emplacement), au lieu d'une erreur technique",
+    "it": "Durante l'associazione viene ora mostrato il motivo effettivo quando non è stato possibile caricare l'account Ring (ad esempio quando l'account non ha posizioni), invece di un errore tecnico",
+    "ko": "Ring 계정을 불러올 수 없을 때(예: 계정에 위치가 없는 경우) 페어링 중 기술적 오류 대신 실제 원인이 표시됩니다",
+    "nl": "Bij het koppelen wordt nu de werkelijke reden getoond als het Ring-account niet geladen kon worden (bijvoorbeeld als het account geen locaties heeft), in plaats van een technische foutmelding",
+    "no": "Ved paring vises nå den faktiske årsaken når Ring-kontoen ikke kunne lastes (f.eks. når kontoen ikke har noen steder), i stedet for en teknisk feil",
+    "pl": "Podczas parowania wyświetlany jest teraz rzeczywisty powód, gdy nie udało się załadować konta Ring (np. gdy konto nie ma żadnych lokalizacji), zamiast błędu technicznego",
+    "sv": "Vid parkoppling visas nu den faktiska orsaken när Ring-kontot inte kunde läsas in (t.ex. när kontot inte har några platser), i stället för ett tekniskt fel"
   }
 }
